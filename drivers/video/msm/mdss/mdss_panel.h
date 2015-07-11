@@ -329,6 +329,8 @@ struct esd_recovery {
 };
 #endif
 
+struct mdss_livedisplay_ctx;
+
 struct mdss_panel_info {
 	u32 xres;
 	u32 yres;
@@ -404,6 +406,8 @@ struct mdss_panel_info {
 	struct esd_recovery esd_recovery;
 	int panel_state;
 #endif
+
+	struct mdss_livedisplay_ctx *livedisplay;
 
 };
 
