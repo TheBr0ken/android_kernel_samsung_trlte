@@ -23,7 +23,6 @@
 #include <mach/msm_bus.h>
 #include <mach/msm_bus_board.h>
 
-
 #if defined(CONFIG_FB_MSM_MDSS_SAMSUNG)
 struct mdp_csc_cfg mdp_csc_convert_wideband = {
 	0,
