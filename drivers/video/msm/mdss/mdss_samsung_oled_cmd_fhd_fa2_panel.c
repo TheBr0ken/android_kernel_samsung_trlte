@@ -2155,6 +2155,10 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 		pr_err("%s: Invalid input data\n", __func__);
 		return -EINVAL;
 	}
+    
+#ifdef CONFIG_POWERSUSPEND
+    set_power_suspend_state_panel_hook(POWER_SUSPEND_INACTIVE);
+#endif
 
 #ifdef CONFIG_POWERSUSPEND
     set_power_suspend_state_panel_hook(POWER_SUSPEND_INACTIVE);
@@ -3251,6 +3255,8 @@ static int samsung_dsi_panel_event_handler(int event)
 			is_negative_on();
 			break;
 #endif
+        case MDSS_EVENT_RESET:
+            break;
 		default:
 			pr_err("%s : unknown event (%d)\n", __func__, event);
 			break;
