@@ -379,7 +379,10 @@ KBUILD_CFLAGS   := -Wundef -Wstrict-prototypes -Wno-trigraphs \
                    -fno-strict-aliasing -fno-common \
 		           -Wno-format-security -Wno-sequence-point \
 		           -fno-delete-null-pointer-checks -mtune=cortex-a15 \
-		           --param l1-cache-size=16 --param l1-cache-line-size=16 --param l2-cache-size=2048
+                   -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -ffast-math \
+                   -funswitch-loops -fpredictive-commoning -fgcse-after-reload \
+		           -fno-aggressive-loop-optimizations \
+		           --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=2048
 
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
