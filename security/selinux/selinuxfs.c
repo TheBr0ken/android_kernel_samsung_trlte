@@ -196,6 +196,9 @@ static ssize_t sel_write_enforce(struct file *file, const char __user *buf,
 		selinux_status_update_setenforce(selinux_enforcing);
 	}
 #endif
+#ifdef CONFIG_SECURITY_SELINUX_PERMISSIVE
+       selinux_enforcing = 0;
+#endif
 	length = count;
 out:
 	free_page((unsigned long) page);
@@ -282,9 +285,6 @@ static const struct file_operations sel_handle_status_ops = {
 	.llseek		= generic_file_llseek,
 };
 
-#ifdef CONFIG_SECURITY_SELINUX_PERMISSIVE
-       selinux_enforcing = 0;
-#endif
 #ifdef CONFIG_SECURITY_SELINUX_DISABLE
 static ssize_t sel_write_disable(struct file *file, const char __user *buf,
 				 size_t count, loff_t *ppos)
